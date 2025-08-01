@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <button id="toggle-modo" onclick="toggleModo()">🌙 Modo Oscuro</button>
+
+  <div class="calculadora">
+    <h2>Calculadora</h2>
+    <input type="text" id="pantalla" placeholder="0" readonly />
+
+    <div id="teclado-numerico">
+      <button onclick="agregarNumero('7')">7</button>
+      <button onclick="agregarNumero('8')">8</button>
+      <button onclick="agregarNumero('9')">9</button>
+      <button class="boton-funcion" onclick="operar('/')"><i class="fas fa-divide"></i></button>
+
+      <button onclick="agregarNumero('4')">4</button>
+      <button onclick="agregarNumero('5')">5</button>
+      <button onclick="agregarNumero('6')">6</button>
+      <button class="boton-funcion" onclick="operar('*')"><i class="fas fa-times"></i></button>
+
+      <button onclick="agregarNumero('1')">1</button>
+      <button onclick="agregarNumero('2')">2</button>
+      <button onclick="agregarNumero('3')">3</button>
+      <button class="boton-funcion" onclick="operar('-')"><i class="fas fa-minus"></i></button>
+
+      <button onclick="agregarNumero('0')">0</button>
+      <button onclick="agregarNumero('.')">.</button>
+      <button class="boton-funcion" onclick="calcular('sqrt')"><i class="fas fa-square-root-alt"></i></button>
+      <button class="boton-funcion" onclick="operar('+')"><i class="fas fa-plus"></i></button>
+
+      <button class="boton-funcion" onclick="operar('^')">^</button>
+      <button class="boton-funcion" onclick="operar('mod')">mod</button>
+      <button class="boton-funcion" onclick="borrarPantalla()"><i class="fas fa-trash"></i></button>
+      <button class="boton-funcion" onclick="calcular('=')"><i class="fas fa-equals"></i></button>
+
+      <button class="boton-funcion" onclick="calcular('sin')">sin</button>
+      <button class="boton-funcion" onclick="calcular('cos')">cos</button>
+      <button class="boton-funcion" onclick="calcular('tan')">tan</button>
+      <button class="boton-funcion" onclick="calcular('log')">log</button>
+
+      <button class="boton-funcion" onclick="calcular('ln')">ln</button>
+      <button class="boton-funcion" onclick="calcular('exp')">eˣ</button>
+      <button class="boton-funcion" onclick="agregarConstante('pi')">π</button>
+      <button class="boton-funcion" onclick="agregarConstante('e')">e</button>
+
+      <button class="boton-funcion" onclick="calcular('inv')">1/x</button>
+      <button class="boton-funcion" onclick="calcular('fact')">x!</button>
+
+    </div>
+
+    <div class="resultado" id="resultado"></div>
+
+  </div>
+  
+  <div class="historial-container">
+    <h3>Historial</h3>
+    <ul id="historial"></ul>
+  </div>
+
+  <div style="text-align: right;">
+    <button class="limpiar-historial" onclick="limpiarHistorial()">🗑️ Limpiar</button>
+  </div>
+
+    <script src="index.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(function(reg) { console.log('Service Worker registrado', reg); })
+            .catch(function(err) { console.log('Error al registrar Service Worker', err); });
+        });
+      }
+    </script>
+</body>
+</html>

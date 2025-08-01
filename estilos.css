@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: background 0.4s ease;
+}
+
+/* Botón de cambio de modo */
+#toggle-modo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #ffffffcc;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s;
+}
+#toggle-modo:hover {
+  background-color: #ffffff;
+}
+
+.calculadora {
+  background-color: #f3f3f3;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+.calculadora h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Pantalla */
+#pantalla {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 1.4rem;
+  text-align: right;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1.2rem;
+  background-color: #fff;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Teclado */
+#teclado-numerico {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+#teclado-numerico button {
+  width: 100%;
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#teclado-numerico button:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.boton-funcion {
+  background: linear-gradient(135deg, #fa709a, #fee140);
+  color: white;
+}
+
+/* Resultado */
+.resultado {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: #222;
+  min-height: 1.5rem;
+}
+
+/* 🌙 Modo Oscuro */
+body.oscuro {
+  background: linear-gradient(135deg, #232526, #414345);
+}
+
+body.oscuro .calculadora {
+  background-color: #2d2d2dcc;
+}
+
+body.oscuro #pantalla {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+body.oscuro .resultado {
+  color: #eee;
+}
+
+body.oscuro #toggle-modo {
+  background-color: #333;
+  color: #fff;
+}
+
+body.oscuro .boton-funcion {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.historial-container {
+  margin-top: 1.5rem;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.historial-container h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+#historial {
+  list-style: none;
+  padding-left: 0;
+}
+
+#historial li {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  margin-bottom: 0.3rem;
+  transition: background 0.3s;
+}
+
+#historial li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Modo oscuro */
+body.oscuro .historial-container h3 {
+  color: #ddd;
+}
+body.oscuro #historial li {
+  background-color: #444;
+  color: #f0f0f0;
+}
+body.oscuro #historial li:hover {
+  background-color: #555;
+}
+
+button.limpiar-historial {
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+button.limpiar-historial:hover {
+  background: linear-gradient(135deg, #ee0979, #ff6a00);
+  transform: scale(1.03);
+}
+
+body.oscuro button.limpiar-historial {
+  background: linear-gradient(135deg, #b31217, #e52d27);
+}
+
+
+#historial li {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: aparecer 0.3s ease forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
